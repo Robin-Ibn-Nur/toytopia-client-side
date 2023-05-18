@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courgette&family=Lobster+Two:ital@1&family=Mogra&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Courgette', cursive;
+  font-family: 'Lobster Two', cursive;
+  font-family: 'Mogra', cursive;
+}

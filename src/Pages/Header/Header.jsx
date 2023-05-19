@@ -3,29 +3,56 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/toy-shop.png"
 import { Tooltip } from 'react-tooltip';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import swal from 'sweetalert';
+import { toast } from 'react-hot-toast';
 
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext)
     console.log(user);
     const handleLogOut = () => {
-        logOut()
-            .then(() => {
-                toast.success('Successfully SignOut', { autoClose: 500 })
-            })
-            .catch(error => {
-                toast.info('Please Check your email and password', error.message)
-            })
+        swal({
+            title: "Are you sure?",
+            text: "Once logOut, you will be able to logIn again",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    logOut()
+                        .then(() => {
+                        })
+                        .catch(error => {
+                            toast.info(`Please Check your email and password', ${error.message}`)
+                        })
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        // logOut()
+        //     .then(() => {
+        //     })
+        //     .catch(error => {
+        //         toast.info(`Please Check your email and password', ${error.message}`)
+        //     })
     }
 
     const menu = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/alltoys">All Toys</Link></li>
-        <li><Link to="/mytoys">My Toys</Link></li>
-        <li><Link to="/addtoys">Add a Toys</Link></li>
         <li><Link to="/blog">Blogs</Link></li>
         <li><Link to="/register">register</Link></li>
-        <li><button onClick={handleLogOut}>Log Out</button></li>
+
+        {user && <>
+            <li><Link to="/mytoys">My Toys</Link></li>
+            <li><Link to="/addtoys">Add a Toys</Link></li>
+            <li><button onClick={handleLogOut}>Log Out</button></li>
+        </>}
     </>
     return (
         <div className="navbar bg-gray-100 text-gray-600 container mx-auto border rounded border-yellow-500">
@@ -44,18 +71,19 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {menu}
-
                 </ul>
             </div>
             <div className="navbar-end avater">
                 {
                     user ?
                         <div className="w-10 rounded-full">
-                            <img data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} className="rounded" src={user?.photoURL} />
+                            <img data-tooltip-id="my-tooltip"
+                                data-tooltip-content={user?.displayName}
+                                src={user?.photoURL} />
                         </div>
 
                         :
-                        <li><Link to="/login">LogIn</Link></li>
+                        <Link to="/login">LogIn</Link>
                 }
                 <Tooltip id="my-tooltip" />
             </div>

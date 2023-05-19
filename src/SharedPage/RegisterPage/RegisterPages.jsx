@@ -2,10 +2,16 @@ import React, { useContext } from 'react';
 import "./RegisterPage.css"
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import swal from 'sweetalert';
+import { toast } from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const RegisterPages = () => {
 
     const { creatNewUser, upDateUserProfile } = useContext(AuthContext);
+
+    const nevigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
 
     const handleRegister = event => {
         event.preventDefault();
@@ -25,29 +31,13 @@ const RegisterPages = () => {
                         console.log(error);
                     })
                 swal("Good job!", "You have successfully register!", "success");
+                // nevigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error)
+                toast.error("SignUp Fail!", { autoClose: 500 })
             })
-
-        // creatUser(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user);
-        //         upDateUserData(name, photoUrl)
-        //             .then(() => { })
-        //             .catch(error => {
-        //                 console.log(error);
-        //             })
-        //         setError('')
-        //         toast.success(`SuccessFully SignUp ${name}`, { autoClose: 500 })
-        //         nevigate(from, { replace: true });
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         toast.error("SignUp Fail!", { autoClose: 500 })
-        //     })
-        // form.reset()
+        form.reset()
     }
     return (
         <div className='container register-page mx-auto bg-gray-100 text-gray-600 text-center py-5 my-5 rounded'>

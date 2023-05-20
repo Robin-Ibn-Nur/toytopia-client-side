@@ -4,8 +4,11 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import swal from 'sweetalert';
 import { toast } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { usePageTitle } from '../../CustomHook/usePageTitle';
 
 const RegisterPages = () => {
+
+    usePageTitle("ToyToPia")
 
     const { creatNewUser, upDateUserProfile } = useContext(AuthContext);
 

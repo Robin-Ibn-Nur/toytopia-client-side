@@ -2,8 +2,12 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { usePageTitle } from '../../CustomHook/usePageTitle';
 
 const LogInPage = () => {
+
+    usePageTitle("ToyToPia")
+
     const { login, signInWithGoogle, loading } = useContext(AuthContext)
 
 

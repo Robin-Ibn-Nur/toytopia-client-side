@@ -25,21 +25,15 @@ const Header = () => {
                         icon: "success",
                     });
                 } else {
-                    logOut()
-                        .then(() => {
-                        })
-                        .catch(error => {
-                            toast.info(`Please Check your email and password', ${error.message}`)
-                        })
                     swal("Your imaginary file is safe!");
                 }
             });
-        // logOut()
-        //     .then(() => {
-        //     })
-        //     .catch(error => {
-        //         toast.info(`Please Check your email and password', ${error.message}`)
-        //     })
+        logOut()
+            .then(() => {
+            })
+            .catch(error => {
+                toast.info(`Please Check your email and password', ${error.message}`)
+            })
     }
 
     const menu = <>
@@ -55,6 +49,8 @@ const Header = () => {
         </>}
     </>
     return (
+
+
         <div className="navbar bg-gray-100 text-gray-600 container mx-auto border rounded border-yellow-500">
             <div className="navbar-start">
                 <div className="dropdown">

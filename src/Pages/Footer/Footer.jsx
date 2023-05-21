@@ -3,23 +3,25 @@ import logo from "../../assets/toy-shop.png"
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-100 text-gray-600 text-center py-5">
+        <footer className="bg-gray-100 text-gray-600 text-center py-5 container mx-auto">
             <div className="container mx-auto">
-                <img src={logo} className='w-16 mx-auto' alt="" />
+                <img src={logo} className='w-16 mx-auto ring rounded p-1' alt="" />
                 <p className="mt-4">
-                    Copyright &copy; 2023 Toytopia. All rights reserved.
+                    Copyright &copy; 2023 ToyToPia. All rights reserved.
                 </p>
                 <div className="mt-4 flex flex-wrap justify-content-around">
-                    <a href="mailto:contact@toytopia.com" className="mx-2">
-                        <i className="fas fa-envelope"></i> Contact Us
+                    <a href="mailto:contact@toytopia.com" className="mx-2 underline">
+                        <i className="fas fa-envelope"></i> Contact Us:
                     </a>
-                    <a href="https://www.facebook.com/toytopia" className="mx-2">
-                        <i className="fab fa-facebook-f"></i> Facebook
+                    <a href="https://www.facebook.com/toytopia" className="mx-2 hover:text-sky-500 hover:underline">
+                        <i className="fab fa-facebook-f"></i>  Facebook
                     </a>
-                    <a href="https://twitter.com/toytopia" className="mx-2">
+                    <a href="https://twitter.com/toytopia" className="mx-2
+                    hover:text-sky-400 hover:underline">
                         <i className="fab fa-twitter"></i> Twitter
                     </a>
-                    <a href="https://www.instagram.com/toytopia" className="mx-2">
+                    <a href="https://www.instagram.com/toytopia" className="mx-2
+                    hover:text-orange-300 hover:underline">
                         <i className="fab fa-instagram"></i> Instagram
                     </a>
                 </div>

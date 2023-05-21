@@ -34,7 +34,7 @@ const RegisterPages = () => {
                         console.log(error);
                     })
                 swal("Good job!", "You have successfully register!", "success");
-                // nevigate(from, { replace: true });
+                nevigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error)

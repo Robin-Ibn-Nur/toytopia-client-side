@@ -37,21 +37,22 @@ const Header = () => {
     }
 
     const menu = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/alltoys">All Toys</Link></li>
-        <li><Link to="/blog">Blogs</Link></li>
-        <li><Link to="/register">register</Link></li>
-
-        {user && <>
-            <li><Link to="/mytoys">My Toys</Link></li>
-            <li><Link to="/addtoys">Add a Toys</Link></li>
-            <li><button onClick={handleLogOut}>Log Out</button></li>
-        </>}
+        <li className='hover:underline'><Link to="/">Home</Link></li>
+        <li className='hover:underline'><Link to="/blog">Blogs</Link></li>
+        <li className='hover:underline'><Link to="/alltoys">All Toys</Link></li>
+        {user &&
+            <>
+                <li className='hover:underline'><Link to="/mytoys">My Toys</Link></li>
+                <li className='hover:underline'><Link to="/addtoys">Add a Toys</Link></li>
+                <li className='hover:underline'><button onClick={handleLogOut}>Log Out</button>
+                </li>
+            </>
+        }
     </>
     return (
 
 
-        <div className="navbar bg-gray-100 text-gray-600 container mx-auto border rounded border-yellow-500">
+        <div className="navbar bg-gray-100 text-gray-600 container mx-auto rounded">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,24 +63,31 @@ const Header = () => {
                     </ul>
                 </div>
                 <a className="normal-case text-xl">ToyToPiA</a>
-                <img src={logo} className='w-10 ml-8' alt="" />
+                <img src={logo} className='w-10 ml-8 ring rounded p-1' alt="" />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {menu}
                 </ul>
             </div>
-            <div className="navbar-end avater">
+            <div className="navbar-end">
                 {
                     user ?
-                        <div className="w-10 rounded-full">
-                            <img data-tooltip-id="my-tooltip"
-                                data-tooltip-content={user?.displayName}
-                                src={user?.photoURL} />
-                        </div>
+                        <>
+                            <div className="w-10 rounded-full">
+                                <img data-tooltip-id="my-tooltip"
+                                    data-tooltip-content={user?.displayName}
+                                    src={user?.photoURL} />
+                            </div>
+                        </>
 
                         :
-                        <Link to="/login">LogIn</Link>
+                        <>
+                            <Link className='hover:underline' to="/register">Register</Link>
+                            <div className="divider lg:divider-horizontal">OR</div>
+                            <Link className='hover:underline' to="/login">LogIn</Link>
+                        </>
+
                 }
                 <Tooltip id="my-tooltip" />
             </div>

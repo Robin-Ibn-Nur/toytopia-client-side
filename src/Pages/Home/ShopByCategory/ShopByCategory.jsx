@@ -1,74 +1,83 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const ShopByCategory = () => {
-    const [activeTab, setActiveTab] = useState(0);
+    const { loading, user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
+    const [activeTab, setActiveTab] = useState("Math Toys");
 
-    const navigate = useNavigate()
-
-    const handleTabSelect = (index) => {
-        setActiveTab(index);
-    };
+    const nevigate = useNavigate();
 
     const handleDetails = id => {
         console.log(id);
-        navigate(`/toy/${id}`)
-
+        nevigate(`/toy/${id}`)
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/toys")
+
+        fetch(`http://localhost:5000/allToysSubCategory/${activeTab}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setToys(data)
             })
-    }, [])
+    }, [activeTab])
+
+    const handleTabClick = (tabName) => {
+        setActiveTab(tabName);
+    };
 
     return (
-        <div className="text-center">
-            <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
-                <TabList>
-                    {toys.map((toy) => (
-                        <Tab key={toy._id}>
-                            <h1>{toy.subcategory}</h1>
-                        </Tab>
-                    ))}
-                </TabList>
 
-                {toys.map((toy) => (
-                    <TabPanel key={toy._id}>
-                        <div className="grid lg:grid-cols-2 gap-4">
-                            {toys
-                                .filter((t) => t.subcategory === toy.subcategory)
-                                .slice(0, 2) // Display only the first two cards per subcategory
-                                .map((filteredToy) => (
-                                    <div key={filteredToy._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                                        <img src={filteredToy.pictureUrl} alt={filteredToy.toyName} className="w-full h-40 object-cover" />
-                                        <div className="p-4">
-                                            <h3 className="text-lg font-semibold mb-2">{filteredToy.toyName}</h3>
-                                            <div className="flex items-center mb-2">
-                                                <span className="text-gray-600 mr-2">Price:</span>
-                                                <span className="font-semibold">${filteredToy.price}</span>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <span className="text-gray-600 mr-2">Rating:</span>
-                                                <span className="font-semibold">{filteredToy.rating}</span>
-                                            </div>
-                                            <button onClick={() => handleDetails(filteredToy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
-                                                View Details
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                        </div>
-                    </TabPanel>
-                ))}
-            </Tabs>
+        <div className='container mx-auto'>
+            <div className='text-center font-bold'>
+                <div
+                    onClick={() => handleTabClick("Math Toys")}
+                    className={`tab${activeTab === "Math Toys" ? "  text-white" : ""
+                        }`}
+                >
+                    Math Toys
+                </div>
+                <div
+                    onClick={() => handleTabClick("Language Toys")}
+                    className={`tab${activeTab === "Language Toys" ? "  text-white" : ""
+                        }`}
+                >
+                    Language Toys
+                </div>
+                <div
+                    onClick={() => handleTabClick("Science Toys")}
+                    className={`tab${activeTab === "Science Toys" ? "  text-white" : ""
+                        }`}
+                >
+                    Science Toys
+                </div>
+            </div>
+            {
+                toys.map(toy => <div className="card my-5 lg:card-side bg-base-100 shadow-xl">
+                    <figure><img src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">New album is released!</h2>
+                        <p>Click the button to listen on Spotiwhy app.</p>
+                        <button onClick={() => handleDetails(toy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
+                            View Details
+                        </button>
+                        
+                    </div>
+                </div>)
+            }
         </div>
+
+
+
+
     );
 };
 
 export default ShopByCategory;
+{/* <button onClick={() => handleDetails(filteredToy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
+                                              View Details
+                                         </button> */}

@@ -93,7 +93,7 @@ input.submit-btn:hover {
 @media only screen and (max-width: 800px) {
     .login-panel {
         width: 70%;
-        height: 500px;
+        height: 400px;
         background-color: #fff;
     }
 

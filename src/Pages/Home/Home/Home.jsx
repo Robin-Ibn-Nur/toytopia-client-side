@@ -23,6 +23,8 @@ const Home = () => {
             <div>
                 <Discount></Discount>
             </div>
+            <div className='text-4xl text-center'>comming soon....</div>
+            <div className='text-4xl text-center'>comming soon....</div>
         </div>
     );
 };

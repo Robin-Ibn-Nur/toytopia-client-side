@@ -1,5 +1,6 @@
 import React from 'react';
 import "./ErrorPage.css"
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
@@ -288,7 +289,11 @@ const ErrorPage = () => {
                             <path id="window-front" className="st8" d="M350.5 196.4s-.4 3.9 15.2 4.3l32.3-30.3s-18.2 1.1-19-.8l-28.5 26.8z" />
                         </g>
                     </g>
+                    <text transform="translate(530 280)" className="st8 st10" fontSize="24.025">
+                        <Link to="/">Back to Home</Link>
+                    </text>
                 </svg>
+
             </div>
         </div>
     );

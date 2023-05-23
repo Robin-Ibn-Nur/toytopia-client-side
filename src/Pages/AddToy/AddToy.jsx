@@ -8,18 +8,19 @@ const AddToy = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target; // Get a reference to the form element
-
+        const price = parseInt(form.elements.price.value,)
         const formValues = {
             pictureUrl: form.elements.pictureUrl.value,
             toyName: form.elements.toyName.value,
             sellerName: form.elements.sellerName.value,
             sellerEmail: form.elements.sellerEmail.value,
             subcategory: form.elements.subcategory.value,
-            price: form.elements.price.value,
+            price: parseInt(form.elements.price.value,),
             rating: form.elements.rating.value,
             quantity: form.elements.quantity.value,
             description: form.elements.description.value,
         };
+        console.log(formValues, price);
 
         fetch("http://localhost:5000/toys", {
             method: "POST",

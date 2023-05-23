@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
@@ -57,7 +55,7 @@ const ShopByCategory = () => {
                 </div>
             </div>
             {
-                toys.map(toy => <div className="card my-5 lg:card-side bg-base-100 shadow-xl">
+                toys.map(toy => <div key={toy._id} className="card my-5 lg:card-side bg-base-100 shadow-xl">
                     <figure><img src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">New album is released!</h2>

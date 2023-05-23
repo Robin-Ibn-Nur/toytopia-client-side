@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const AllToys = () => {
     usePageTitle("ToyToPia")
     const [toys, setToys] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchText, setSearchText] = useState('');
 
     const nevigate = useNavigate();
 
@@ -29,24 +29,36 @@ const AllToys = () => {
     //             setToys(data);
     //         });
     // };
-    const handleSearch = (e) => {
-        setSearchQuery(e.target.value);
+
+    const handleSearch = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/getToyNameByText/${searchText}`);
+            const data = await response.json();
+            console.log(data);
+            setToys(data);
+        } catch (error) {
+            console.error('Error searching toys:', error);
+        }
     };
 
-    const filteredToys = toys.filter((toy) =>
-        toy.toyName.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+
+    // const handleInputChange = (e) => {
+    //     setSearchText(e.target.value);
+    // };
+
+    // const filteredToys = toys.filter((toy) =>
+    //     toy.toyName.toLowerCase().includes(searchQuery.toLowerCase())
+    // );
     return (
         <div className="container mx-auto">
             <h1 className="text-2xl font-bold underline my-4">All Toys</h1>
-            <div className="mb-4">
+            <div className="search-box p-2 text-center">
                 <input
+                    onChange={(e) => setSearchText(e.target.value)}
                     type="text"
-                    className="w-full border border-gray-300 rounded px-3 py-2"
-                    placeholder="Search by toy name"
-                    value={searchQuery}
-                    onChange={handleSearch}
-                />
+                    className="p-1"
+                />{" "}
+                <button onClick={handleSearch}>Search</button>
             </div>
             <table className="min-w-full bg-white border border-gray-300">
                 <thead>
@@ -60,7 +72,7 @@ const AllToys = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredToys.map((toy) => (
+                    {toys.map((toy) => (
                         <tr key={toy._id}>
                             <td className="py-2 px-4 border-b">{toy.sellerName || '-'}</td>
                             <td className="py-2 px-4 border-b">{toy.toyName}</td>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Banner from '../Banner/Banner';
 import Gallery from '../Gallery/Gallery';
 import ShopByCategory from '../ShopByCategory/ShopByCategory';
@@ -19,6 +19,8 @@ const Home = () => {
     if (loading) {
         return <GptLoader></GptLoader>
     }
+
+
     return (
         <div>
             <div className='container mx-auto bg-white my-5'>

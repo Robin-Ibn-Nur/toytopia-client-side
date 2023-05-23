@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ShopByCategory = () => {
-    const { loading, user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
     const [activeTab, setActiveTab] = useState("Math Toys");
     const nevigate = useNavigate();
@@ -25,6 +25,11 @@ const ShopByCategory = () => {
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
+
+
+    useEffect(() => {
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    }, []);
 
     return (
 
@@ -53,7 +58,7 @@ const ShopByCategory = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {toys.map(toy => <div key={toy._id} className="container mx-auto py-10">
+                {toys.map(toy => <div key={toy._id} data-aos="fade-up" className="container mx-auto py-10">
 
                     <div className="bg-white rounded shadow-md p-4">
                         <img className="w-full h-96 mb-4" src={toy?.pictureUrl} alt="" />
@@ -69,7 +74,7 @@ const ShopByCategory = () => {
                     </div>
                 </div>)}
             </div>
-            
+
         </div>
 
 

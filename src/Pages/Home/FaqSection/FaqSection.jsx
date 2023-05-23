@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import 'swiper/css/pagination';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+
 SwiperCore.use([Pagination]);
 
 const FaqSection = () => {
+
+        useEffect(() => {
+            AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+        }, []);
+    
+    
     const faqs = [
         {
             question: "What is your return policy?",
@@ -27,7 +38,7 @@ const FaqSection = () => {
     ];
 
     return (
-        <div className="container mx-auto py-8">
+        <div data-aos="fade-up" className="container mx-auto py-8">
             <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
             <Swiper
                 slidesPerView={1}

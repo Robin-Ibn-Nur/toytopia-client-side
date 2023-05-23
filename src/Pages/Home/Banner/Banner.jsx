@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect} from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,6 +15,10 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
 const Banner = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    }, []);
     const banners = [
         {
             image: 'https://img.freepik.com/free-photo/creative-collage-mars-planet-with-astronauts_23-2149488966.jpg?w=740&t=st=1684852939~exp=1684853539~hmac=c6c64dea87670a744f377136a246dd80ef8adb44b4b251ad31e6d4f2c3b3f24a',
@@ -32,7 +38,7 @@ const Banner = () => {
         },
     ];
     return (
-        <div className="container mx-auto py-10">
+        <div data-aos="fade-up" className="container mx-auto py-10">
             <Swiper
                 pagination={{
                     type: "progressbar",

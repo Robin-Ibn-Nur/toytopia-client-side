@@ -19,6 +19,14 @@ ToyTopia is an online platform dedicated to providing a wide range of toys for k
 - Tailwind CSS for styling
 - daisiUI for framework guide
 
+## npm packages
+
+- swiper for banner and faq section
+- sweetalert for notify the user
+- react-tooltip for mouse hover on user profile pic
+- react-fast-marquee in the discount and trendings
+- aos
+
 ## Getting Started
 
 To get a local copy of the project up and running, follow these steps:

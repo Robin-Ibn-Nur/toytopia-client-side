@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Cards from './Cards';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const TreandySection = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    }, []);
 
     const data = [
         {
@@ -29,7 +36,7 @@ const TreandySection = () => {
 
 
     return (
-        <div className='flex gap-5 mr-5'>
+        <div data-aos="fade-up" className='flex gap-5 mr-5'>
             {
                 data?.map((d, index) => <Cards
                     key={index}

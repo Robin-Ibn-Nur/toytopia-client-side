@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Discount = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    }, []);
+
     const discounts = [
         {
             title: 'Summer Sale',
@@ -19,7 +27,7 @@ const Discount = () => {
         },
     ];
     return (
-        <div>
+        <div data-aos="fade-down">
             
             <div className="flex gap-5 mr-5">
                 {discounts.map((discount, index) => (

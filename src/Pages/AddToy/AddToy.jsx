@@ -23,9 +23,8 @@ const AddToy = () => {
             quantity: form.elements.quantity.value,
             description: form.elements.description.value,
         };
-        console.log(formValues, price);
-
-        fetch("http://localhost:5000/toys", {
+        
+        fetch("https://toytopia-server-side.vercel.app/toys", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -34,7 +33,6 @@ const AddToy = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     form.reset(); // Reset the form
                     toast.success(`Thank You Mr. ${user?.displayName}`, { autoClose: 500 });

@@ -5,8 +5,6 @@ import { toast } from 'react-hot-toast';
 const UpdateToyInfo = () => {
     const data = useLoaderData();
 
-    console.log(data);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -16,8 +14,7 @@ const UpdateToyInfo = () => {
             quantity: form.quantity.value,
             description: form.description.value,
         };
-        console.log(updatedToy);
-        fetch(`http://localhost:5000/toys/${data?._id}`, {
+        fetch(`https://toytopia-server-side.vercel.app/toys/${data?._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +23,6 @@ const UpdateToyInfo = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log('Toy Updated:', data);
                 if (data.modifiedCount > 0) {
                     swal({
                         title: "Good job!",

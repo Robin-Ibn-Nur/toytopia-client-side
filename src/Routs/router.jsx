@@ -37,12 +37,12 @@ export const router = createBrowserRouter([
             {
                 path: "/toy/:id",
                 element: <ProtectedRoute><SingleToy></SingleToy></ProtectedRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toytopia-server-side.vercel.app/toys/${params.id}`)
             },
             {
                 path: "/updateToyInfo/:id",
                 element: <UpdateToyInfo></UpdateToyInfo>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toytopia-server-side.vercel.app/toys/${params.id}`)
             },
             {
                 path: "/blog",

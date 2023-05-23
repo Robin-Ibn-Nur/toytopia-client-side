@@ -9,13 +9,12 @@ const ShopByCategory = () => {
     const nevigate = useNavigate();
 
     const handleDetails = id => {
-        console.log(id);
         nevigate(`/toy/${id}`)
     }
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/allToysSubCategory/${activeTab}`)
+        fetch(`https://toytopia-server-side.vercel.app/allToysSubCategory/${activeTab}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data)

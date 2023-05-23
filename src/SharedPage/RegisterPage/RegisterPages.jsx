@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import swal from 'sweetalert';
 import { toast } from 'react-hot-toast';
@@ -22,21 +22,16 @@ const RegisterPages = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoUrl = form.photo.value;
-        console.log(name, email, password, photoUrl);
 
         creatNewUser(email, password)
             .then(result => {
-                console.log(result.user)
                 upDateUserProfile(name, photoUrl)
                     .then(() => { })
-                    .catch(error => {
-                        console.log(error);
-                    })
+                    .catch(error => { })
                 swal("Good job!", "You have successfully register!", "success");
                 nevigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error)
                 toast.error("SignUp Fail!", { autoClose: 500 })
             })
         form.reset()
@@ -45,7 +40,6 @@ const RegisterPages = () => {
     const handleGoogleSignUp = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result);
                 toast.success("SuccessFully SignIn with your Google Account", { autoClose: 500 })
                 nevigate(from, { replace: true });
             })

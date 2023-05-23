@@ -10,7 +10,7 @@ const AllToys = () => {
     const nevigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/alltoys")
+        fetch("https://toytopia-server-side.vercel.app/alltoys")
             .then(res => res.json())
             .then(data => {
                 setToys(data)
@@ -23,9 +23,8 @@ const AllToys = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/getToyNameByText/${searchText}`);
+            const response = await fetch(`https://toytopia-server-side.vercel.app/getToyNameByText/${searchText}`);
             const data = await response.json();
-            console.log(data);
             setToys(data);
         } catch (error) {
             console.error('Error searching toys:', error);

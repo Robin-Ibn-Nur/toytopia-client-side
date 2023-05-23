@@ -20,12 +20,9 @@ const LogInPage = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
-
         login(email, password)
             .then(result => {
                 toast.success("You are successFully Loged In", { autoClose: 500 })
-                console.log(result);
                 swal("Good job!", "Welcome back!", "success", {
                     button: "Aww yiss!",
                 });
@@ -34,7 +31,6 @@ const LogInPage = () => {
 
             })
             .catch(error => {
-                console.log(error)
                 toast.error("Something is missing, Please check your email & password")
             })
         form.reset()
@@ -43,7 +39,6 @@ const LogInPage = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result);
                 toast.success("SuccessFully SignIn with your Google Account", { autoClose: 500 })
                 nevigate(from, { replace: true });
             })

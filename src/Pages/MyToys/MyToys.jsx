@@ -8,7 +8,7 @@
 //     const [sortBy, setSortBy] = useState('');
 
 //     useEffect(() => {
-//         fetch(`http://localhost:5000/users?sellerEmail=${user?.email}`)
+//         fetch(`https://toytopia-server-side.vercel.app/users?sellerEmail=${user?.email}`)
 //             .then(res => res.json())
 //             .then(data => {
 //                 setToyData(data);
@@ -16,7 +16,7 @@
 
 //     }, [])
 //     useEffect(() => {
-//         fetch(`http://localhost:5000/toys/${user?.email}?sortBy=${sortBy}`)
+//         fetch(`https://toytopia-server-side.vercel.app/toys/${user?.email}?sortBy=${sortBy}`)
 //             .then((res) => res.json())
 //             .then((data) => {
 //                 setToyData(data);
@@ -40,7 +40,7 @@
 //         })
 //             .then((willDelete) => {
 //                 if (willDelete) {
-//                     fetch(`http://localhost:5000/toys/${id}`, {
+//                     fetch(`https://toytopia-server-side.vercel.app/toys/${id}`, {
 //                         method: 'DELETE'
 //                     })
 //                         .then(res => res.json())
@@ -145,12 +145,11 @@ const MyToys = () => {
     const [sortBy, setSortBy] = useState('');
 
     useEffect(() => {
-        // http://localhost:5000/toys?sellerEmail=${user?.email}&sortBy=${sortBy}
+        // https://toytopia-server-side.vercel.app/toys?sellerEmail=${user?.email}&sortBy=${sortBy}
         const fetchToys = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/toys?sellerEmail=${user?.email}&sortBy=${sortBy}`);
+                const response = await fetch(`https://toytopia-server-side.vercel.app/toys?sellerEmail=${user?.email}&sortBy=${sortBy}`);
                 const data = await response.json();
-                data.map(d => console.log(d.price))
                 setToyData(data);
             } catch (error) {
                 console.error('Error fetching toys:', error);
@@ -162,7 +161,6 @@ const MyToys = () => {
 
     const handleSortChange = (e) => {
         setSortBy(e.target.value);
-        console.log(e.target.value);
     };
 
     const handleDelete = (id) => {
@@ -175,7 +173,7 @@ const MyToys = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/toys/${id}`, {
+                    fetch(`https://toytopia-server-side.vercel.app/toys/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { usePageTitle } from '../../CustomHook/usePageTitle';
 
 const AddToy = () => {
+
+    usePageTitle("ToyToPiA")
     const { user } = useContext(AuthContext)
 
     const handleSubmit = (event) => {

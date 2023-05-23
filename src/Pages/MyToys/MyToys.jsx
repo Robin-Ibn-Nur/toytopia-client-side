@@ -135,8 +135,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import { usePageTitle } from '../../CustomHook/usePageTitle';
 
 const MyToys = () => {
+
+    usePageTitle("ToyToPiA")
     const { user } = useContext(AuthContext);
     const [toyData, setToyData] = useState([]);
     const [sortBy, setSortBy] = useState('');

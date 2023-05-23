@@ -1,7 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { usePageTitle } from '../../../CustomHook/usePageTitle';
 
 const SingleToyDetails = () => {
+
+    usePageTitle("ToyToPiA")
     const data = useLoaderData()
     const {
         pictureUrl,

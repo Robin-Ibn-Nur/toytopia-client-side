@@ -21,15 +21,6 @@ const AllToys = () => {
         nevigate(`/toy/${id}`)
     }
 
-    // const handleSearch = () => {
-    //     fetch(`http://localhost:5000/getToyNameByText/${searchText}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setToys(data);
-    //         });
-    // };
-
     const handleSearch = async () => {
         try {
             const response = await fetch(`http://localhost:5000/getToyNameByText/${searchText}`);
@@ -42,13 +33,6 @@ const AllToys = () => {
     };
 
 
-    // const handleInputChange = (e) => {
-    //     setSearchText(e.target.value);
-    // };
-
-    // const filteredToys = toys.filter((toy) =>
-    //     toy.toyName.toLowerCase().includes(searchQuery.toLowerCase())
-    // );
     return (
         <div className="container mx-auto">
             <h1 className="text-2xl font-bold underline my-4">All Toys</h1>
@@ -56,11 +40,13 @@ const AllToys = () => {
                 <input
                     onChange={(e) => setSearchText(e.target.value)}
                     type="text"
+                    placeholder='Toy Name'
                     className="p-1"
                 />{" "}
-                <button onClick={handleSearch}>Search</button>
+                <button className='btn btn-sm btn-outline px-8'
+                    onClick={handleSearch}>Search</button>
             </div>
-            <table className="min-w-full bg-white border border-gray-300">
+            <table className="min-w-full bg-white border border-gray-300 mb-4 ">
                 <thead>
                     <tr>
                         <th className="py-2 px-4 border-b">Seller</th>

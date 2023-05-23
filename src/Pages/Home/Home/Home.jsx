@@ -6,6 +6,7 @@ import Discount from '../Discount/Discount';
 import { usePageTitle } from '../../../CustomHook/usePageTitle';
 import TreandySection from '../TreandySection/TreandySection';
 import Marquee from "react-fast-marquee";
+import FaqSection from '../FaqSection/FaqSection';
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
     usePageTitle("ToyToPia")
     return (
         <div>
-            <div className='container mx-auto bg-white'>
+            <div className='container mx-auto bg-white my-5'>
                 <Banner></Banner>
             </div>
             <div>
@@ -22,8 +23,11 @@ const Home = () => {
             <div>
                 <ShopByCategory></ShopByCategory>
             </div>
-            <div>
-                <Discount></Discount>
+            <div className="container mx-auto py-8">
+                <h2 className="text-2xl font-bold mb-4">Special Discount</h2>
+                <Marquee gradient autoFill direction='right'>
+                    <Discount></Discount>
+                </Marquee>
             </div>
             <div>
                 <div className="container mx-auto py-8">
@@ -34,7 +38,9 @@ const Home = () => {
                 </Marquee>
                 </div>
             </div>
-            <div className='text-4xl text-center'>comming soon....</div>
+            <div>
+                <FaqSection></FaqSection>
+            </div>
         </div>
     );
 };

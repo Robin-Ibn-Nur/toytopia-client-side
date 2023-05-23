@@ -1,50 +1,36 @@
 import React from 'react';
 
 const Discount = () => {
+    const discounts = [
+        {
+            title: 'Summer Sale',
+            description: 'Get up to 50% off on selected items. Limited time offer!',
+            image: 'https://img.freepik.com/free-vector/tropical-end-summer-sales-background_52683-44530.jpg?w=740&t=st=1684838392~exp=1684838992~hmac=72fc862e4874de0b5b8f3e6939544292655c61c8e0f5bace1f2f8844aee9e053',
+        },
+        {
+            title: 'Back to School Discount',
+            description: 'Enjoy 20% off on all school supplies. Start the new year with savings!',
+            image: 'https://img.freepik.com/free-vector/back-school-sales_23-2148607428.jpg?w=740&t=st=1684838616~exp=1684839216~hmac=e7739c5f727c8e2f5f293e3fb62d163ba37714e3088487e7619cd444ed1dcef6',
+        },
+        {
+            title: 'Holiday Special',
+            description: 'Celebrate the holidays with our exclusive discounts and deals.',
+            image: 'https://img.freepik.com/free-vector/holiday-sale-with-candles-poster-design_1262-17677.jpg?w=740&t=st=1684838753~exp=1684839353~hmac=391c6535d58d7075a3d8e8f0a0510d236657b51ea3bcbba30d0042408ec54400',
+        },
+    ];
     return (
-        <section className="bg-pink-100 py-8">
-            <div className="container mx-auto">
-                <h2 className="text-3xl font-bold mb-4 text-center">Special Discounts</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-white p-4 shadow-md">
-                        <h3 className="text-lg font-semibold mb-2">Robot Friend</h3>
-                        <p className="text-gray-700 mb-4">
-                            Get your own robotic friend and have fun playing together! Limited time offer.
-                        </p>
-                        <div className="flex justify-between items-center">
-                            <span className="text-2xl font-bold">$29.99</span>
-                            <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">
-                                Buy Now
-                            </button>
-                        </div>
+        <div>
+            
+            <div className="flex gap-5 mr-5">
+                {discounts.map((discount, index) => (
+                    <div key={index} className="bg-white rounded shadow-xl p-4">
+                        <img className="w-full h-60 mb-4" src={discount.image} alt={discount.title} />
+                        <h3 className="text-xl font-semibold mb-2">{discount.title}</h3>
+                        <p>{discount.description}</p>
                     </div>
-                    <div className="bg-white p-4 shadow-md">
-                        <h3 className="text-lg font-semibold mb-2">Colorful Blocks</h3>
-                        <p className="text-gray-700 mb-4">
-                            Build amazing structures with these vibrant and educational blocks. Limited stock available.
-                        </p>
-                        <div className="flex justify-between items-center">
-                            <span className="text-2xl font-bold">$19.99</span>
-                            <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bg-white p-4 shadow-md">
-                        <h3 className="text-lg font-semibold mb-2">Puzzle Adventure</h3>
-                        <p className="text-gray-700 mb-4">
-                            Embark on an exciting puzzle adventure and challenge your problem-solving skills. Limited offer.
-                        </p>
-                        <div className="flex justify-between items-center">
-                            <span className="text-2xl font-bold">$14.99</span>
-                            <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
-        </section>
+        </div>
     );
 };
 

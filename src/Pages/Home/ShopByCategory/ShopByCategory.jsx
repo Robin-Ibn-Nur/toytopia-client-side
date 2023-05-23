@@ -6,7 +6,6 @@ const ShopByCategory = () => {
     const { loading, user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
     const [activeTab, setActiveTab] = useState("Math Toys");
-
     const nevigate = useNavigate();
 
     const handleDetails = id => {
@@ -19,7 +18,6 @@ const ShopByCategory = () => {
         fetch(`http://localhost:5000/allToysSubCategory/${activeTab}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setToys(data)
             })
     }, [activeTab])
@@ -31,42 +29,56 @@ const ShopByCategory = () => {
     return (
 
         <div className='container mx-auto'>
-            <div className='text-center font-bold'>
+            <div className='text-center my-2 font-bold'>
                 <div
                     onClick={() => handleTabClick("Math Toys")}
-                    className={`tab${activeTab === "Math Toys" ? "  text-white" : ""
+                    className={`tab text-xl${activeTab === "Math Toys" ? "  text-black underline" : ""
                         }`}
                 >
                     Math Toys
                 </div>
                 <div
                     onClick={() => handleTabClick("Language Toys")}
-                    className={`tab${activeTab === "Language Toys" ? "  text-white" : ""
+                    className={`tab text-xl${activeTab === "Language Toys" ? "  text-black underline" : ""
                         }`}
                 >
                     Language Toys
                 </div>
                 <div
                     onClick={() => handleTabClick("Science Toys")}
-                    className={`tab${activeTab === "Science Toys" ? "  text-white" : ""
+                    className={`tab text-xl${activeTab === "Science Toys" ? "  text-black underline" : ""
                         }`}
                 >
                     Science Toys
                 </div>
             </div>
-            {
-                toys.map(toy => <div key={toy._id} className="card my-5 lg:card-side bg-base-100 shadow-xl">
-                    <figure><img src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
+            {/* {
+                toys.map(toy => <div key={toy._id} className="card my-5 lg:card-side bg-white shadow-xl">
+                    <figure><img src={toy?.pictureUrl} className='h-96' alt="Album" /></figure>
                     <div className="card-body">
-                        <h2 className="card-title">New album is released!</h2>
-                        <p>Click the button to listen on Spotiwhy app.</p>
+                        <h2 className="card-title">{toy.toyName}</h2>
+                        <p>{toy.description}</p>
                         <button onClick={() => handleDetails(toy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
                             View Details
                         </button>
                         
                     </div>
                 </div>)
-            }
+            } */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {toys.map(toy => <div key={toy._id} className="container mx-auto py-10">
+
+                    <div className="bg-white rounded shadow-md p-4">
+                        <img className="w-full h-96 mb-4" src={toy?.pictureUrl} alt="" />
+                        <h3 className="text-lg font-semibold mb-2">{toy.toyName}</h3>
+                        <p>{toy.description.slice(0, 120)}</p>
+                        <button onClick={() => handleDetails(toy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
+                            View Details
+                        </button>
+                    </div>
+                </div>)}
+            </div>
+            
         </div>
 
 

@@ -14,7 +14,7 @@ const SingleToyDetails = () => {
         description
     } = data;
     return (
-        <div className="card lg:card-side bg-base-100 shadow-xl my-5 container mx-auto bg-white h-fit">
+        <div className="card lg:card-side font-serif bg-base-100 shadow-xl my-5 container mx-auto bg-white h-fit">
             <figure><img src={pictureUrl} alt={toyName} className='h-4/5 w-full' /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold my-2 sm:text-3xl">{toyName}</h2>

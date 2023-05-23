@@ -25,10 +25,10 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <div>
-                <Gallery></Gallery>
+                <ShopByCategory></ShopByCategory>
             </div>
             <div>
-                <ShopByCategory></ShopByCategory>
+                <Gallery></Gallery>
             </div>
             <div className="container mx-auto py-8">
                 <h2 className="text-2xl font-bold mb-4">Special Discount</h2>

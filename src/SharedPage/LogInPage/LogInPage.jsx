@@ -3,7 +3,6 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { usePageTitle } from '../../CustomHook/usePageTitle';
-import { FaGoogle } from "react-icons/fa";
 
 const LogInPage = () => {
 
@@ -38,7 +37,7 @@ const LogInPage = () => {
                 console.log(error)
                 toast.error("Something is missing, Please check your email & password")
             })
-        // form.reset()
+        form.reset()
     }
 
     const handleGoogleSignIn = () => {

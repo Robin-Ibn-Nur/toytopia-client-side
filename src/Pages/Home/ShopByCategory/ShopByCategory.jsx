@@ -52,26 +52,17 @@ const ShopByCategory = () => {
                     Science Toys
                 </div>
             </div>
-            {/* {
-                toys.map(toy => <div key={toy._id} className="card my-5 lg:card-side bg-white shadow-xl">
-                    <figure><img src={toy?.pictureUrl} className='h-96' alt="Album" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">{toy.toyName}</h2>
-                        <p>{toy.description}</p>
-                        <button onClick={() => handleDetails(toy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
-                            View Details
-                        </button>
-                        
-                    </div>
-                </div>)
-            } */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {toys.map(toy => <div key={toy._id} className="container mx-auto py-10">
 
                     <div className="bg-white rounded shadow-md p-4">
                         <img className="w-full h-96 mb-4" src={toy?.pictureUrl} alt="" />
                         <h3 className="text-lg font-semibold mb-2">{toy.toyName}</h3>
-                        <p>{toy.description.slice(0, 120)}</p>
+                        <div>
+                            <p>Price: {toy?.price}</p>
+                            <p>Ratings: {toy?.rating}</p>
+                        </div>
+                        <p><span className='font-bold'>Description about </span>{toy.description.slice(0, 120)}...</p>
                         <button onClick={() => handleDetails(toy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
                             View Details
                         </button>
@@ -88,6 +79,3 @@ const ShopByCategory = () => {
 };
 
 export default ShopByCategory;
-{/* <button onClick={() => handleDetails(filteredToy._id)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
-                                              View Details
-                                         </button> */}

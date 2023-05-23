@@ -181,7 +181,8 @@ const MyToys = () => {
                                 swal("Toy has been deleted!", {
                                     icon: "success",
                                 });
-                                setToyData(prevData => prevData.filter(toy => toy._id !== id));
+                                const remaining = toyData.filter(toy => toy._id !== id)
+                                setToyData(remaining)
                             }
                         })
                         .catch(error => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from "../../assets/toy-shop.png"
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -13,16 +14,17 @@ const Footer = () => {
                     <a href="mailto:contact@toytopia.com" className="mx-2 underline">
                         <i className="fas fa-envelope"></i> Contact Us:
                     </a>
-                    <a href="https://www.facebook.com/toytopia" className="mx-2 hover:text-sky-500 hover:underline">
-                        <i className="fab fa-facebook-f"></i>  Facebook
+                    <a href="https://www.facebook.com/toytopia" className="mx-2 hover:text-sky-500 hover:underline flex gap-2">
+                        <FaFacebook></FaFacebook>
+                        Facebook
                     </a>
                     <a href="https://twitter.com/toytopia" className="mx-2
-                    hover:text-sky-400 hover:underline">
-                        <i className="fab fa-twitter"></i> Twitter
+                    hover:text-sky-400 hover:underline flex gap-2">
+                        <FaTwitter></FaTwitter> Twitter
                     </a>
                     <a href="https://www.instagram.com/toytopia" className="mx-2
-                    hover:text-orange-300 hover:underline">
-                        <i className="fab fa-instagram"></i> Instagram
+                    hover:text-orange-300 hover:underline flex gap-2">
+                        <FaInstagram></FaInstagram> Instagram
                     </a>
                 </div>
                 <p className="mt-4">

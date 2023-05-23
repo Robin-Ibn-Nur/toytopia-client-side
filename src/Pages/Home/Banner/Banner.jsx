@@ -15,17 +15,17 @@ import { Pagination, Navigation } from "swiper";
 const Banner = () => {
     const banners = [
         {
-            image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHTB10OtkKFXXXXXkXFXXq6xXFXXX0%2FMontessori-materials-educational-Toys-Dominoes-Children-Preschool-Teaching-Counting-Stacking-Board-Wooden-Math-Toy-W123.jpg&f=1&nofb=1&ipt=6cb0bf4060a3725cc42aadb513f4a44bca8ac95f7496add9e00161bf35d949b3&ipo=images',
+            image: 'https://img.freepik.com/free-photo/creative-collage-mars-planet-with-astronauts_23-2149488966.jpg?w=740&t=st=1684852939~exp=1684853539~hmac=c6c64dea87670a744f377136a246dd80ef8adb44b4b251ad31e6d4f2c3b3f24a',
             title: "Adventure Awaits",
             description: "Embark on exciting journeys with our adventurous toys and games.",
         },
         {
-            image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi5.walmartimages.com%2Fasr%2F313db21b-9553-4068-a86e-afecef887f69_1.d8ee8bf80cd0c9806fe4217837bc2535.jpeg%3FodnWidth%3D1000%26odnHeight%3D1000%26odnBg%3Dffffff&f=1&nofb=1&ipt=6ec8b32448587797c3948b5b2434bc6776f65f7cb79fd8cc40da5ecda3a806ed&ipo=images',
+            image: 'https://img.freepik.com/free-photo/ideas-idea-vision-design-plan-objective-mission-concept_53876-167112.jpg?w=826&t=st=1684852792~exp=1684853392~hmac=75e723fd53b82eb1ac6b8c7d60f69e3288a93bfef9d4355b87d389e8cea9d39a',
             title: "Creativity Unleashed",
             description: "Inspire imagination and unleash creativity with our innovative toys and crafts.",
         },
         {
-            image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FqZ3OVi-gAMo%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=ef3246df96b35fb5662b65c3eeaac49cb63eae41fd3320a5185ecd459ac90834&ipo=images',
+            image: 'https://img.freepik.com/free-photo/back-school-concept-with-alphabet-letters-wooden-cubes-paper-high-angle-view_176474-7559.jpg?w=740&t=st=1684852710~exp=1684853310~hmac=31087df611769bd38a6a3fc72c85aa57b9d60cceadd8a5729cc11126fbed1416',
             title: "Learning Made Fun",
             description: "Discover educational toys and activities that make learning enjoyable and engaging.",
 

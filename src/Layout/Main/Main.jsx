@@ -6,11 +6,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import PageLoader from '../../Pages/Loader/PageLoader/PageLoader';
 
 const Main = () => {
-    const { loading } = useContext(AuthContext)
     
-    if (loading) {
-        return <PageLoader></PageLoader>
-    }
     return (
         <div>
             <Header></Header>

@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mytoys",
-                element: <MyToys></MyToys>
+                element: <ProtectedRoute><MyToys></MyToys></ProtectedRoute>
             },
             {
                 path: "/toy/:id",

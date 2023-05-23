@@ -40,9 +40,9 @@ const AddToy = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto py-8">
             <h1 className="text-2xl font-bold mb-4">Add a Toy</h1>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
                     <label className="block mb-2 font-bold" htmlFor="pictureUrl">
                         Picture URL of the toy

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { usePageTitle } from '../../CustomHook/usePageTitle';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import GptLoader from '../GptLoader/GptLoader';
 
 const Blog = () => {
     usePageTitle("ToyToPia")
+
+    const { loading } = useContext(AuthContext)
+
+    if (loading) {
+        return <GptLoader></GptLoader>
+    }
 
     const blogPosts = [
         {

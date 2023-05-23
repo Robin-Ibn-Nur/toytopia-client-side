@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../Banner/Banner';
 import Gallery from '../Gallery/Gallery';
 import ShopByCategory from '../ShopByCategory/ShopByCategory';
@@ -7,11 +7,18 @@ import { usePageTitle } from '../../../CustomHook/usePageTitle';
 import TreandySection from '../TreandySection/TreandySection';
 import Marquee from "react-fast-marquee";
 import FaqSection from '../FaqSection/FaqSection';
+import GptLoader from '../../GptLoader/GptLoader';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 
 const Home = () => {
 
     usePageTitle("ToyToPia")
+    const { loading } = useContext(AuthContext)
+
+    if (loading) {
+        return <GptLoader></GptLoader>
+    }
     return (
         <div>
             <div className='container mx-auto bg-white my-5'>

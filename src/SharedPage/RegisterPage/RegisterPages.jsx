@@ -115,7 +115,7 @@ const RegisterPages = () => {
                     </button>
                 </form>
                 <div className="divider">OR</div>
-                <p className='text-center'>Already have an account Please <Link to="/login" className='link'>Log In</Link></p>
+                <p className='text-center'>Already have an account! Please <Link to="/login" className='link'>Log In</Link></p>
                 <div className="divider">OR</div>
                 <div className='text-center'>
                     <button

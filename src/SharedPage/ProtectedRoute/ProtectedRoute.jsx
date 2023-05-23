@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { LoaderIcon } from 'react-hot-toast';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import GptLoader from '../../Pages/GptLoader/GptLoader';
 
 const ProtectedRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
     if (loading) {
-        return <LoaderIcon></LoaderIcon>
+        return <GptLoader></GptLoader>
     }
 
     if (user) {

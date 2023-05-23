@@ -3,6 +3,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { usePageTitle } from '../../CustomHook/usePageTitle';
+import { FaGoogle } from "react-icons/fa";
 
 const LogInPage = () => {
 
@@ -52,17 +53,20 @@ const LogInPage = () => {
     //         })
     // }
     return (
-        <div className='container register-page mx-auto bg-gray-100 text-gray-600 text-center py-5 my-5 rounded'>
-            <form onSubmit={handleLogin} className="login-panel">
-                <div className="left-side sm:hidded"></div>
-                <div className="right-side">
-                    <h1>Log In</h1>
-                    <p>Log In and get exciting Toys</p>
-                    <input type="email" name="email" placeholder='Email' required />
-                    <input type="password" name="password" placeholder='Password' required />
-                    <input type="submit" value="let's go" className="submit-btn" />
-                </div>
-            </form>
+        <div >
+            <div className='container register-page mx-auto bg-gray-100 text-gray-600 text-center py-5 my-5 rounded'>
+                <form onSubmit={handleLogin} className="login-panel">
+                    <div className="left-side sm:hidded"></div>
+                    <div className="right-side">
+                        <h1>Log In</h1>
+                        <p>Log In and get exciting Toys</p>
+                        <input type="email" name="email" placeholder='Email' required />
+                        <input type="password" name="password" placeholder='Password' required />
+                        <input type="submit" value="let's go" className="submit-btn" />
+                    </div>
+                </form>
+                <FaGoogle></FaGoogle>
+            </div>
         </div>
     );
 };

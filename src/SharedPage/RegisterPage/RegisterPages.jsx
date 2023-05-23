@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
-import "./RegisterPage.css"
+import React, { useContext} from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import swal from 'sweetalert';
 import { toast } from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../CustomHook/usePageTitle';
 
 const RegisterPages = () => {
 
     usePageTitle("ToyToPia")
 
-    const { creatNewUser, upDateUserProfile } = useContext(AuthContext);
+    const { creatNewUser, upDateUserProfile, signInWithGoogle } = useContext(AuthContext);
 
     const nevigate = useNavigate();
     const location = useLocation();
@@ -42,20 +41,92 @@ const RegisterPages = () => {
             })
         form.reset()
     }
+
+    const handleGoogleSignUp = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result);
+                toast.success("SuccessFully SignIn with your Google Account", { autoClose: 500 })
+                nevigate(from, { replace: true });
+            })
+            .catch(error => {
+                toast.error("Something is Fishy, Please check your Email & SignIn again", { autoClose: 500 })
+            })
+    }
     return (
-        <div className='container register-page mx-auto bg-gray-100 text-gray-600 text-center py-5 my-5 rounded'>
-            <form onSubmit={handleRegister} className="login-panel">
-                <div className="left-side sm:hidded"></div>
-                <div className="right-side">
-                    <h1>Register</h1>
-                    <p>Register and get a free pressent</p>
-                    <input type="text" name='name' placeholder='Name' />
-                    <input type="email" name="email" placeholder='Email' required />
-                    <input type="password" name="password" placeholder='Password' required />
-                    <input type="url" name="photo" placeholder='PhotoUrl' required />
-                    <input type="submit" value="let's go" className="submit-btn" />
+        <div className="container mx-auto py-8">
+            <h1 className="text-2xl font-bold mb-4">Registration Page</h1>
+
+            <div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+                <form onSubmit={handleRegister} className="max-w-md mx-auto">
+                    <div className="mb-4">
+                        <label htmlFor="name" className="block mb-1 font-medium">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            name='name'
+                            placeholder='Name'
+                            className="w-full border border-gray-300 rounded px-3 py-2"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="email" className="block mb-1 font-medium">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder='Email'
+                            className="w-full border border-gray-300 rounded px-3 py-2"
+                            required />
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="password" className="block mb-1 font-medium">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder='Password'
+                            className="w-full border border-gray-300 rounded px-3 py-2"
+                            required />
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="photoURL" className="block mb-1 font-medium">
+                            Photo URL
+                        </label>
+                        <input
+                            type="url"
+                            name="photo"
+                            placeholder='PhotoUrl'
+                            className="w-full border border-gray-300 rounded px-3 py-2"
+                            required />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mb-4"
+                    >
+                        Register
+                    </button>
+                </form>
+                <div className="divider">OR</div>
+                <p className='text-center'>Already have an account Please <Link to="/login" className='link'>Log In</Link></p>
+                <div className="divider">OR</div>
+                <div className='text-center'>
+                    <button
+                        onClick={handleGoogleSignUp}
+                        className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full"
+                    >
+                        Sign up with Google
+                    </button>
                 </div>
-            </form>
+            </div>
+
         </div>
     );
 };
